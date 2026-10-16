@@ -1,9 +1,688 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Hitgault</title>
-  </head>
-  <body>
-    Initial test page.
-  </body>
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Hitgalut — Proyecto Transversal</title>
+
+        <!-- Google Fonts: Fuentes de época claras, antiguas y 100% entendibles -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+
+        <style>
+            :root {
+                /* Colores base estilo MADERA CLARA y PERGAMINO LUMINOSO */
+                --color-bg-base: #e8d3b7;
+                --color-wood-light: #d8c09d;
+                --color-wood-paper: #ebdcc6;
+                --color-text: #2a1c12;
+                --color-muted: #5c4735;
+                --color-accent: #7a542e;
+
+                /* Colores solicitados para las tarjetas */
+                --color-card-black: #000000;
+                --color-card-red: #CC3B1F;
+                --color-card-white: #FFFFFF;
+                --color-card-yellow: #FCF88B;
+
+                --max-content: 1180px;
+                --max-text: 780px;
+                --radius: 8px;
+                --shadow: 0 12px 30px rgba(42, 28, 18, 0.18);
+                --transition: 260ms ease;
+
+                /* Tipografías claras de época */
+                --font-heading: 'Cinzel', 'Cinzel Decorative', 'Times New Roman', serif;
+                --font-body: 'Georgia', 'Times New Roman', Times, serif;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: var(--color-bg-base);
+                
+                /* TEXTURA DE MADERA CLARA (Vetas y tono pergamino claro) */
+                background-image: 
+                    /* Sombra suave en los bordes para dar profundidad */
+                    radial-gradient(circle at 50% 50%, transparent 40%, rgba(138, 102, 66, 0.15) 100%),
+                    /* Vetas horizontales de madera clara */
+                    repeating-linear-gradient(0deg, rgba(120, 85, 45, 0.05) 0px, rgba(120, 85, 45, 0.05) 2px, transparent 2px, transparent 8px),
+                    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.08) 0px, rgba(255, 255, 255, 0.08) 3px, transparent 3px, transparent 15px),
+                    /* Ondulaciones diagonales del veteado natural */
+                    linear-gradient(85deg, transparent 20%, rgba(138, 102, 66, 0.06) 40%, transparent 60%),
+                    linear-gradient(-85deg, transparent 30%, rgba(255, 255, 255, 0.12) 50%, transparent 70%);
+                
+                background-attachment: fixed;
+                color: var(--color-text);
+                font-family: var(--font-body);
+                font-size: 16px;
+                line-height: 1.6;
+                overflow-x: hidden;
+            }
+
+            img {
+                display: block;
+                max-width: 100%;
+            }
+
+            a {
+                color: inherit;
+            }
+
+            a:focus-visible {
+                outline: 3px solid var(--color-accent);
+                outline-offset: 4px;
+            }
+
+            .sr-only {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                border: 0;
+            }
+
+            /* =========================
+               HEADER
+            ========================= */
+
+            header {
+                width: 100%;
+                background: #3a2517;
+                background-image: 
+                    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.03) 0px, rgba(255, 255, 255, 0.03) 2px, transparent 2px, transparent 6px),
+                    radial-gradient(circle at 50% 0%, rgba(216, 192, 157, 0.15), transparent 70%);
+                border-bottom: 3px double #d8c09d;
+                color: #fcefdc;
+                font-family: var(--font-heading);
+            }
+
+            .header-image-container {
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background: #171717;
+            }
+
+            .header-image-container img {
+                display: block;
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
+
+            .header-content {
+                width: min(100% - 40px, var(--max-content));
+                margin: 0 auto;
+                padding: 64px 0 60px;
+                font-family: var(--font-heading);
+            }
+
+            .header-info {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                align-items: start;
+                gap: 48px;
+                max-width: 1100px;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .info-block {
+                min-width: 0;
+            }
+
+            .info-main {
+                margin: 0;
+                font-size: clamp(1.2rem, 2vw, 1.6rem);
+                font-weight: 700;
+                line-height: 1.3;
+                letter-spacing: 0.05em;
+                color: #fcefdc;
+            }
+
+            .members {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .members li {
+                margin: 0;
+                line-height: 1.7;
+                font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+                color: #e5d2b8;
+                letter-spacing: 0.02em;
+            }
+
+            .project-description {
+                max-width: var(--max-text);
+                margin: 50px auto 0;
+                text-align: center;
+                color: #ebdcc6;
+                font-size: clamp(1rem, 1.4vw, 1.15rem);
+                line-height: 1.8;
+                font-style: italic;
+                font-family: var(--font-body);
+            }
+
+            /* =========================
+               MAIN / HUB
+            ========================= */
+
+            main {
+                width: 100%;
+            }
+
+            .content-hub {
+                width: min(100% - 40px, var(--max-content));
+                margin: 0 auto;
+                padding: 70px 0 80px;
+            }
+
+            .section-heading {
+                max-width: 780px;
+                margin: 0 auto 52px;
+                text-align: center;
+                border-bottom: 2px solid rgba(122, 84, 46, 0.3);
+                padding-bottom: 24px;
+            }
+
+            .section-heading h2 {
+                margin: 0 0 14px;
+                font-size: clamp(2.2rem, 5vw, 4rem);
+                line-height: 1.1;
+                font-family: var(--font-heading);
+                font-weight: 900;
+                letter-spacing: 0.06em;
+                color: var(--color-text);
+            }
+
+            .section-heading p {
+                max-width: 650px;
+                margin: 0 auto;
+                color: var(--color-muted);
+                font-size: 1.1rem;
+                font-family: var(--font-body);
+            }
+
+            .cards-grid {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 32px;
+            }
+
+            .project-card {
+                min-width: 0;
+                min-height: 520px;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                border-radius: var(--radius);
+                box-shadow: var(--shadow);
+                border: 2px solid #a38260;
+                transition: transform var(--transition), box-shadow var(--transition);
+            }
+
+            .project-card:hover {
+                transform: translateY(-7px);
+                box-shadow: 0 18px 40px rgba(42, 28, 18, 0.3);
+            }
+
+            /* Espacio para imágenes dentro de las tarjetas */
+            .card-visual {
+                position: relative;
+                min-height: 230px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                background-color: rgba(0, 0, 0, 0.12);
+                padding: 16px;
+            }
+
+            .card-image-placeholder {
+                width: 100%;
+                height: 100%;
+                min-height: 190px;
+                border: 2px dashed rgba(122, 84, 46, 0.5);
+                border-radius: 4px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: inherit;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .card-image-placeholder span {
+                font-family: var(--font-body);
+                font-size: 0.95rem;
+                font-style: italic;
+                opacity: 0.85;
+            }
+
+            /* TARJETA NEGRA (#000000) - Texto Blanco */
+            .card-black {
+                background-color: var(--color-card-black);
+                color: #FFFFFF;
+            }
+
+            /* TARJETA ROJA (#CC3B1F) - Texto Blanco */
+            .card-red {
+                background-color: var(--color-card-red);
+                color: #FFFFFF;
+            }
+
+            /* TARJETA BLANCA (#FFFFFF) - Texto Negro */
+            .card-white {
+                background-color: var(--color-card-white);
+                color: #000000;
+            }
+
+            /* TARJETA AMARILLA (#FCF88B) - Texto Negro */
+            .card-yellow {
+                background-color: var(--color-card-yellow);
+                color: #000000;
+            }
+
+            .card-content {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                padding: 32px;
+            }
+
+            .card-content h3 {
+                margin: 0 0 16px;
+                font-family: var(--font-heading);
+                font-size: clamp(1.8rem, 3vw, 2.3rem);
+                line-height: 1.2;
+                font-weight: 700;
+                letter-spacing: 0.03em;
+            }
+
+            .card-content p {
+                margin: 0;
+                max-width: 580px;
+                font-family: var(--font-body);
+                font-size: 1.05rem;
+                line-height: 1.7;
+            }
+
+            .card-link {
+                align-self: flex-start;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 48px;
+                margin-top: auto;
+                padding: 12px 22px;
+                border: 1px solid currentColor;
+                border-radius: 4px;
+                color: inherit;
+                text-decoration: none;
+                font-family: var(--font-body);
+                font-size: 0.9rem;
+                font-weight: bold;
+                letter-spacing: 0.05em;
+                transition: background var(--transition), color var(--transition), transform var(--transition);
+            }
+
+            .card-black .card-link:hover,
+            .card-red .card-link:hover {
+                background: #FFFFFF;
+                color: #000000;
+                transform: translateX(4px);
+            }
+
+            .card-white .card-link:hover,
+            .card-yellow .card-link:hover {
+                background: #000000;
+                color: #FFFFFF;
+                transform: translateX(4px);
+            }
+
+            /* =========================
+               SECCIÓN DEL CORTO
+            ========================= */
+
+            .shortfilm-section {
+                width: min(100% - 40px, var(--max-content));
+                margin: 30px auto 90px;
+                padding: 48px;
+                background-color: var(--color-wood-paper);
+                /* Textura ligera de madera clara en la sección */
+                background-image: 
+                    repeating-linear-gradient(0deg, rgba(120, 85, 45, 0.04) 0px, rgba(120, 85, 45, 0.04) 2px, transparent 2px, transparent 6px);
+                border: 2px solid #a38260;
+                border-radius: var(--radius);
+                box-shadow: var(--shadow);
+                text-align: center;
+            }
+
+            .shortfilm-section h2 {
+                font-family: var(--font-heading);
+                font-size: clamp(2rem, 4.5vw, 3.2rem);
+                margin: 0 0 18px;
+                color: var(--color-text);
+                letter-spacing: 0.04em;
+            }
+
+            .shortfilm-section p {
+                font-family: var(--font-body);
+                font-size: 1.1rem;
+                max-width: 750px;
+                margin: 0 auto 30px;
+                color: var(--color-muted);
+            }
+
+            .shortfilm-player-placeholder {
+                width: 100%;
+                max-width: 800px;
+                aspect-ratio: 16 / 9;
+                margin: 0 auto;
+                background: #2a1c12;
+                border: 2px solid #a38260;
+                border-radius: 4px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #d8c09d;
+                font-family: var(--font-body);
+            }
+
+            /* =========================
+               FOOTER
+            ========================= */
+
+            footer {
+                width: 100%;
+                padding: 80px 20px 90px;
+                background: #3a2517;
+                background-image: 
+                    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.03) 0px, rgba(255, 255, 255, 0.03) 2px, transparent 2px, transparent 6px),
+                    radial-gradient(circle at 50% 100%, rgba(216, 192, 157, 0.12), transparent 70%);
+                color: #fcefdc;
+                text-align: center;
+                font-family: var(--font-heading);
+                border-top: 3px double #d8c09d;
+            }
+
+            .footer-inner {
+                width: min(100%, 900px);
+                margin: 0 auto;
+            }
+
+            .footer-crucifix {
+                font-size: 2.2rem;
+                color: #d8c09d;
+                margin-bottom: 12px;
+                display: block;
+            }
+
+            .footer-title {
+                margin: 0;
+                font-size: clamp(1.8rem, 4vw, 3rem);
+                line-height: 1.2;
+                font-weight: 700;
+                letter-spacing: 0.05em;
+            }
+
+            .footer-academic {
+                margin: 22px 0 0;
+                color: #e5d2b8;
+                font-size: clamp(1rem, 1.8vw, 1.25rem);
+                line-height: 1.5;
+                letter-spacing: 0.03em;
+            }
+
+            .footer-email {
+                display: inline-block;
+                margin-top: 25px;
+                color: #fcefdc;
+                text-decoration: none;
+                font-size: 1.1rem;
+                font-family: var(--font-body);
+                transition: opacity var(--transition);
+            }
+
+            .footer-email:hover {
+                opacity: 0.7;
+            }
+
+            .footer-github {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 48px;
+                margin-top: 22px;
+                padding: 11px 24px;
+                border: 1px solid #d8c09d;
+                border-radius: 4px;
+                color: #fcefdc;
+                text-decoration: none;
+                font-size: 0.95rem;
+                font-family: var(--font-body);
+                font-weight: bold;
+                letter-spacing: 0.06em;
+                transition: background var(--transition), color var(--transition), transform var(--transition);
+            }
+
+            .footer-github:hover {
+                background: #d8c09d;
+                color: #2a1c12;
+                transform: translateY(-2px);
+            }
+
+            /* =========================
+               RESPONSIVE
+            ========================= */
+
+            @media (max-width: 768px) {
+                .header-info {
+                    grid-template-columns: 1fr;
+                    gap: 30px;
+                }
+
+                .cards-grid {
+                    grid-template-columns: 1fr;
+                    gap: 28px;
+                }
+
+                .shortfilm-section {
+                    padding: 28px 20px;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <h1 class="sr-only">Hitgalut</h1>
+            
+            <!-- Imagen colocada en el encabezado -->
+            <div class="header-image-container">
+                <img
+                    src="logo_hitgalut.jpg"
+                    alt="Imagen principal del proyecto Hitgalut - Revelación"
+                />
+            </div>
+
+            <div class="header-content">
+                <section class="header-info" aria-label="Información académica">
+                    <article class="info-block">
+                        <p class="info-main">GRUPO 2</p>
+                    </article>
+
+                    <article class="info-block">
+                        <ul class="members">
+                            <li>Ignacio Albiach Ruíz</li>
+                            <li>Aitana Charlo Novillo</li>
+                            <li>Juan Correas Pérez</li>
+                            <li>Elena García Aunión</li>
+                            <li>Bosco Manterola Castiella</li>
+                            <li>Victoria Sánchez Mateos</li>
+                            <li>Cristina Redondo San Román</li>
+                        </ul>
+                    </article>
+
+                    <article class="info-block">
+                        <p class="info-main">3º. COMUNICACIÓN AUDIOVISUAL</p>
+                    </article>
+                </section>
+
+                <p class="project-description">
+                    “Hitgalut es una obra audiovisual que atraviesa distintos relatos y épocas para explorar la condición humana ante la pérdida, el sufrimiento, la enfermedad y la pregunta por la existencia, cuestionando también la relación entre religión y peligrosidad.”
+                </p>
+            </div>
+        </header>
+
+        <main>
+            <section class="content-hub" aria-labelledby="contenidos-title">
+                <div class="section-heading">
+                    <h2 id="contenidos-title">Contenidos</h2>
+
+                    <p>
+                        Explora los diferentes proyectos y piezas que forman
+                        parte de Hitgalut.
+                    </p>
+                </div>
+
+                <div class="cards-grid">
+                    <!-- TARJETA NEGRA (ELENCO) -->
+                    <article class="project-card card-black">
+                        <div class="card-visual">
+                            <div class="card-image-placeholder">
+                                <span>[ Hueco para imagen de Elenco ]</span>
+                            </div>
+                        </div>
+
+                        <div class="card-content">
+                            <div>
+                                <h3>Elenco</h3>
+
+                                <p>
+                                    Presentación de los actores, personajes e integrantes que dan vida al proyecto audiovisual y conforman el reparto principal.
+                                </p>
+                            </div>
+
+                            <a class="card-link" href="#"> VER ELENCO → </a>
+                        </div>
+                    </article>
+
+                    <!-- TARJETA ROJA (MOODREEL) -->
+                    <article class="project-card card-red">
+                        <div class="card-visual">
+                            <div class="card-image-placeholder">
+                                <span>[ Hueco para imagen de Moodreel ]</span>
+                            </div>
+                        </div>
+
+                        <div class="card-content">
+                            <div>
+                                <h3>Moodreel</h3>
+
+                                <p>
+                                    Pieza conceptual y estética que transmite la atmósfera, tono visual, ritmo y esencia del proyecto.
+                                </p>
+                            </div>
+
+                            <a class="card-link" href="#"> VER MOODREEL → </a>
+                        </div>
+                    </article>
+
+                    <!-- TARJETA BLANCA (MAKING OFF) -->
+                    <article class="project-card card-white">
+                        <div class="card-visual">
+                            <div class="card-image-placeholder">
+                                <span>[ Hueco para imagen de Making off ]</span>
+                            </div>
+                        </div>
+
+                        <div class="card-content">
+                            <div>
+                                <h3>Making off</h3>
+
+                                <p>
+                                    Un vistazo tras las cámaras para descubrir el proceso de rodaje, la producción y el trabajo del equipo.
+                                </p>
+                            </div>
+
+                            <a class="card-link" href="#"> VER MAKING OFF → </a>
+                        </div>
+                    </article>
+
+                    <!-- TARJETA AMARILLA (PODCASTS) -->
+                    <article class="project-card card-yellow">
+                        <div class="card-visual">
+                            <div class="card-image-placeholder">
+                                <span>[ Hueco para imagen de Podcasts ]</span>
+                            </div>
+                        </div>
+
+                        <div class="card-content">
+                            <div>
+                                <h3>Podcasts</h3>
+
+                                <p>
+                                    Episodios sonoros donde se profundiza en las temáticas, entrevistas y debates alrededor del proyecto.
+                                </p>
+                            </div>
+
+                            <a class="card-link" href="#"> ESCUCHAR PODCASTS → </a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- SECCIÓN DEL CORTO -->
+            <section class="shortfilm-section" aria-labelledby="corto-title">
+                <h2 id="corto-title">El Cortometraje</h2>
+                <p>
+                    Disfruta de la pieza central de Revelación, la obra donde converge todo el trabajo creativo y narrativo del proyecto.
+                </p>
+                <div class="shortfilm-player-placeholder">
+                    <span>[ Reproductor del Cortometraje ]</span>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-inner">
+                <span class="footer-crucifix" aria-hidden="true">✝</span>
+
+                <h2 class="footer-title">GESTIÓN Y DESARROLLO WEB</h2>
+
+                <p class="footer-academic">
+                    GRUPO 2 · CURSO ACADÉMICO 2026/2027
+                </p>
+
+                <a class="footer-email" href="mailto:info@ufv.es">
+                    info@ufv.es
+                </a>
+
+                <br />
+
+                <a href="https://github.com/Hitgalut/hitgalut" class="footer-github" target="_blank" rel="noopener noreferrer">
+                    GITHUB &rarr;
+                </a>
+            </div>
+        </footer>
+    </body>
 </html>
