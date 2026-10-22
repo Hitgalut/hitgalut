@@ -3,374 +3,334 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
         <title>Hitgalut — Proyecto Transversal</title>
 
-        <!-- Google Fonts: Fuentes de época claras, antiguas y 100% entendibles -->
+        <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Georgia&display=swap" rel="stylesheet">
 
         <style>
             :root {
-                /* Colores base estilo MADERA CLARA y PERGAMINO LUMINOSO */
-                --color-bg-base: #e8d3b7;
-                --color-wood-light: #d8c09d;
+                --color-bg-base: #e5cfb2;
+                --color-wood-dark: #23160e;
+                --color-wood-header: #2d1c12;
                 --color-wood-paper: #ebdcc6;
-                --color-text: #2a1c12;
-                --color-muted: #5c4735;
-                --color-accent: #7a542e;
+                --color-text: #22150d;
+                --color-muted: #5e4735;
+                --color-accent: #8b5b29;
+                --color-gold: #cbb279;
+                --color-border-ornament: #a6845f;
 
-                /* Colores solicitados para las tarjetas */
-                --color-card-black: #000000;
-                --color-card-red: #CC3B1F;
-                --color-card-white: #FFFFFF;
-                --color-card-yellow: #FCF88B;
+                /* Colores de tarjetas */
+                --color-card-black: #0c0a09;
+                --color-card-red: #8f220f;
+                --color-card-white: #fbf9f4;
+                --color-card-yellow: #f4ef9f;
 
-                --max-content: 1180px;
-                --max-text: 780px;
-                --radius: 8px;
-                --shadow: 0 12px 30px rgba(42, 28, 18, 0.18);
-                --transition: 260ms ease;
+                --max-content: 1200px;
+                --max-text: 820px;
+                --radius: 6px;
+                --shadow: 0 16px 36px rgba(35, 22, 14, 0.16);
+                --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 
-                /* Tipografías claras de época */
-                --font-heading: 'Cinzel', 'Cinzel Decorative', 'Times New Roman', serif;
-                --font-body: 'Georgia', 'Times New Roman', Times, serif;
+                --font-heading: 'Cinzel', serif;
+                --font-body: 'Cormorant Garamond', Georgia, serif;
+                --font-sans: system-ui, -apple-system, sans-serif;
             }
 
-            * {
-                box-sizing: border-box;
-            }
-
-            html {
-                scroll-behavior: smooth;
-            }
+            * { box-sizing: border-box; }
+            html { scroll-behavior: smooth; }
 
             body {
                 margin: 0;
                 padding: 0;
                 background-color: var(--color-bg-base);
-                
-                /* TEXTURA DE MADERA CLARA (Vetas y tono pergamino claro) */
                 background-image: 
-                    /* Sombra suave en los bordes para dar profundidad */
-                    radial-gradient(circle at 50% 50%, transparent 40%, rgba(138, 102, 66, 0.15) 100%),
-                    /* Vetas horizontales de madera clara */
-                    repeating-linear-gradient(0deg, rgba(120, 85, 45, 0.05) 0px, rgba(120, 85, 45, 0.05) 2px, transparent 2px, transparent 8px),
-                    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.08) 0px, rgba(255, 255, 255, 0.08) 3px, transparent 3px, transparent 15px),
-                    /* Ondulaciones diagonales del veteado natural */
-                    linear-gradient(85deg, transparent 20%, rgba(138, 102, 66, 0.06) 40%, transparent 60%),
-                    linear-gradient(-85deg, transparent 30%, rgba(255, 255, 255, 0.12) 50%, transparent 70%);
-                
+                    radial-gradient(circle at 50% 30%, rgba(255,255,255,0.2) 0%, transparent 80%),
+                    radial-gradient(circle at 50% 80%, rgba(85, 52, 25, 0.12) 0%, transparent 85%),
+                    repeating-linear-gradient(0deg, rgba(90, 60, 30, 0.04) 0px, rgba(90, 60, 30, 0.04) 1px, transparent 1px, transparent 6px),
+                    linear-gradient(90deg, rgba(0,0,0,0.03) 0%, transparent 15%, transparent 85%, rgba(0,0,0,0.03) 100%);
                 background-attachment: fixed;
                 color: var(--color-text);
                 font-family: var(--font-body);
-                font-size: 16px;
+                font-size: 19px;
                 line-height: 1.6;
                 overflow-x: hidden;
             }
 
-            img {
-                display: block;
-                max-width: 100%;
-            }
-
-            a {
-                color: inherit;
-            }
-
-            a:focus-visible {
-                outline: 3px solid var(--color-accent);
-                outline-offset: 4px;
-            }
+            img { display: block; max-width: 100%; }
+            a { color: inherit; text-decoration: none; }
 
             .sr-only {
-                position: absolute;
-                width: 1px;
-                height: 1px;
-                padding: 0;
-                margin: -1px;
-                overflow: hidden;
-                clip: rect(0, 0, 0, 0);
-                white-space: nowrap;
-                border: 0;
+                position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+                overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
             }
 
-            /* =========================
-               HEADER
-            ========================= */
-
+            /* HEADER */
             header {
                 width: 100%;
-                background: #3a2517;
-                background-image: 
-                    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.03) 0px, rgba(255, 255, 255, 0.03) 2px, transparent 2px, transparent 6px),
-                    radial-gradient(circle at 50% 0%, rgba(216, 192, 157, 0.15), transparent 70%);
-                border-bottom: 3px double #d8c09d;
-                color: #fcefdc;
+                background: linear-gradient(180deg, #1d1109 0%, #2b1a10 100%);
+                border-bottom: 4px double var(--color-gold);
+                color: #f7ede0;
                 font-family: var(--font-heading);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.35);
             }
 
             .header-image-container {
                 width: 100%;
-                margin: 0;
-                padding: 0;
+                background: #000;
+                position: relative;
+                max-height: 520px;
                 overflow: hidden;
-                background: #171717;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
             .header-image-container img {
-                display: block;
                 width: 100%;
-                height: auto;
+                height: 100%;
                 object-fit: cover;
+                filter: brightness(0.92) contrast(1.05);
+            }
+
+            .header-image-container::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                box-shadow: inset 0 -40px 60px rgba(29, 17, 9, 0.95);
             }
 
             .header-content {
-                width: min(100% - 40px, var(--max-content));
+                width: min(100% - 48px, var(--max-content));
                 margin: 0 auto;
-                padding: 64px 0 60px;
-                font-family: var(--font-heading);
+                padding: 60px 0 54px;
             }
 
             .header-info {
                 display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                align-items: start;
-                gap: 48px;
-                max-width: 1100px;
-                margin: 0 auto;
+                grid-template-columns: 1fr 1.6fr 1fr;
+                align-items: center;
+                gap: 32px;
+                padding-bottom: 40px;
+                border-bottom: 1px solid rgba(203, 178, 121, 0.25);
                 text-align: center;
             }
 
-            .info-block {
-                min-width: 0;
-            }
-
-            .info-main {
+            .info-block p.info-main {
                 margin: 0;
-                font-size: clamp(1.2rem, 2vw, 1.6rem);
+                font-size: 1.45rem;
                 font-weight: 700;
-                line-height: 1.3;
-                letter-spacing: 0.05em;
-                color: #fcefdc;
+                letter-spacing: 0.12em;
+                color: var(--color-gold);
+                text-transform: uppercase;
             }
 
             .members {
                 list-style: none;
                 padding: 0;
                 margin: 0;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 6px 14px;
             }
 
             .members li {
-                margin: 0;
-                line-height: 1.7;
-                font-size: clamp(0.95rem, 1.4vw, 1.15rem);
-                color: #e5d2b8;
-                letter-spacing: 0.02em;
+                font-size: 1.15rem;
+                color: #ebdcc6;
+                letter-spacing: 0.03em;
             }
 
             .project-description {
                 max-width: var(--max-text);
-                margin: 50px auto 0;
+                margin: 40px auto 0;
                 text-align: center;
                 color: #ebdcc6;
-                font-size: clamp(1rem, 1.4vw, 1.15rem);
-                line-height: 1.8;
+                font-size: 1.35rem;
+                line-height: 1.7;
                 font-style: italic;
                 font-family: var(--font-body);
+                padding: 0 16px;
+                position: relative;
             }
 
-            /* =========================
-               MAIN / HUB
-            ========================= */
-
-            main {
-                width: 100%;
-            }
-
+            /* CONTENIDO / HUB */
             .content-hub {
-                width: min(100% - 40px, var(--max-content));
+                width: min(100% - 48px, var(--max-content));
                 margin: 0 auto;
-                padding: 70px 0 80px;
+                padding: 85px 0 60px;
             }
 
             .section-heading {
-                max-width: 780px;
-                margin: 0 auto 52px;
+                max-width: 800px;
+                margin: 0 auto 60px;
                 text-align: center;
-                border-bottom: 2px solid rgba(122, 84, 46, 0.3);
-                padding-bottom: 24px;
+                position: relative;
+            }
+
+            .section-heading::after {
+                content: "❖";
+                display: block;
+                color: var(--color-accent);
+                font-size: 1.2rem;
+                margin: 18px auto 0;
+                opacity: 0.7;
             }
 
             .section-heading h2 {
-                margin: 0 0 14px;
-                font-size: clamp(2.2rem, 5vw, 4rem);
-                line-height: 1.1;
+                margin: 0 0 10px;
+                font-size: clamp(2.4rem, 4.5vw, 3.8rem);
                 font-family: var(--font-heading);
-                font-weight: 900;
-                letter-spacing: 0.06em;
+                font-weight: 800;
+                letter-spacing: 0.08em;
                 color: var(--color-text);
+                text-transform: uppercase;
             }
 
             .section-heading p {
-                max-width: 650px;
                 margin: 0 auto;
                 color: var(--color-muted);
-                font-size: 1.1rem;
-                font-family: var(--font-body);
+                font-size: 1.3rem;
+                font-style: italic;
             }
 
+            /* TARJETAS */
             .cards-grid {
                 display: grid;
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 32px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+
+            .card-wrapper-link {
+                display: block;
+                text-decoration: none;
+                color: inherit;
             }
 
             .project-card {
-                min-width: 0;
+                position: relative;
                 min-height: 520px;
                 display: flex;
                 flex-direction: column;
-                overflow: hidden;
                 border-radius: var(--radius);
                 box-shadow: var(--shadow);
-                border: 2px solid #a38260;
-                transition: transform var(--transition), box-shadow var(--transition);
+                border: 2px solid var(--color-border-ornament);
+                transition: var(--transition);
+                overflow: hidden;
+                cursor: pointer;
             }
 
-            .project-card:hover {
-                transform: translateY(-7px);
-                box-shadow: 0 18px 40px rgba(42, 28, 18, 0.3);
+            .card-wrapper-link:hover .project-card {
+                transform: translateY(-8px);
+                box-shadow: 0 24px 44px rgba(35, 22, 14, 0.28);
             }
 
-            /* Espacio para imágenes dentro de las tarjetas */
             .card-visual {
                 position: relative;
-                min-height: 230px;
+                height: 230px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                overflow: hidden;
-                background-color: rgba(0, 0, 0, 0.12);
-                padding: 16px;
+                background-color: rgba(0, 0, 0, 0.08);
+                padding: 18px;
             }
 
             .card-image-placeholder {
                 width: 100%;
                 height: 100%;
-                min-height: 190px;
-                border: 2px dashed rgba(122, 84, 46, 0.5);
+                border: 1px dashed currentColor;
+                opacity: 0.75;
                 border-radius: 4px;
                 display: flex;
+                flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                color: inherit;
+                gap: 10px;
                 text-align: center;
                 padding: 20px;
+                background: rgba(0,0,0,0.04);
+            }
+
+            .card-image-placeholder svg {
+                width: 32px;
+                height: 32px;
+                opacity: 0.6;
             }
 
             .card-image-placeholder span {
-                font-family: var(--font-body);
-                font-size: 0.95rem;
+                font-size: 1.05rem;
                 font-style: italic;
-                opacity: 0.85;
-            }
-
-            /* TARJETA NEGRA (#000000) - Texto Blanco */
-            .card-black {
-                background-color: var(--color-card-black);
-                color: #FFFFFF;
-            }
-
-            /* TARJETA ROJA (#CC3B1F) - Texto Blanco */
-            .card-red {
-                background-color: var(--color-card-red);
-                color: #FFFFFF;
-            }
-
-            /* TARJETA BLANCA (#FFFFFF) - Texto Negro */
-            .card-white {
-                background-color: var(--color-card-white);
-                color: #000000;
-            }
-
-            /* TARJETA AMARILLA (#FCF88B) - Texto Negro */
-            .card-yellow {
-                background-color: var(--color-card-yellow);
-                color: #000000;
+                letter-spacing: 0.03em;
             }
 
             .card-content {
                 flex: 1;
                 display: flex;
                 flex-direction: column;
-                padding: 32px;
+                justify-content: space-between;
+                padding: 36px;
             }
 
             .card-content h3 {
-                margin: 0 0 16px;
+                margin: 0 0 14px;
                 font-family: var(--font-heading);
-                font-size: clamp(1.8rem, 3vw, 2.3rem);
-                line-height: 1.2;
-                font-weight: 700;
-                letter-spacing: 0.03em;
+                font-size: 2.2rem;
+                letter-spacing: 0.04em;
+                line-height: 1.15;
             }
 
             .card-content p {
-                margin: 0;
-                max-width: 580px;
-                font-family: var(--font-body);
-                font-size: 1.05rem;
-                line-height: 1.7;
+                margin: 0 0 28px;
+                font-size: 1.22rem;
+                line-height: 1.6;
+                opacity: 0.92;
             }
 
             .card-link {
                 align-self: flex-start;
                 display: inline-flex;
                 align-items: center;
-                justify-content: center;
-                min-height: 48px;
-                margin-top: auto;
-                padding: 12px 22px;
+                gap: 8px;
+                padding: 13px 26px;
                 border: 1px solid currentColor;
                 border-radius: 4px;
-                color: inherit;
-                text-decoration: none;
-                font-family: var(--font-body);
-                font-size: 0.9rem;
-                font-weight: bold;
-                letter-spacing: 0.05em;
-                transition: background var(--transition), color var(--transition), transform var(--transition);
+                font-family: var(--font-heading);
+                font-size: 0.85rem;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                transition: var(--transition);
+                text-transform: uppercase;
             }
 
-            .card-black .card-link:hover,
-            .card-red .card-link:hover {
-                background: #FFFFFF;
-                color: #000000;
+            /* Esquemas de color */
+            .card-black { background-color: var(--color-card-black); color: #fbf8f3; border-color: #383431; }
+            .card-red { background-color: var(--color-card-red); color: #fff8f5; border-color: #5c1407; }
+            .card-white { background-color: var(--color-card-white); color: #1c1511; border-color: #c9b192; }
+            .card-yellow { background-color: var(--color-card-yellow); color: #1b1706; border-color: #b7b055; }
+
+            .card-wrapper-link:hover .card-black .card-link,
+            .card-wrapper-link:hover .card-red .card-link {
+                background: #fbf8f3;
+                color: #0c0a09;
                 transform: translateX(4px);
             }
 
-            .card-white .card-link:hover,
-            .card-yellow .card-link:hover {
-                background: #000000;
-                color: #FFFFFF;
+            .card-wrapper-link:hover .card-white .card-link,
+            .card-wrapper-link:hover .card-yellow .card-link {
+                background: #1c1511;
+                color: #fbf8f3;
                 transform: translateX(4px);
             }
 
-            /* =========================
-               SECCIÓN DEL CORTO
-            ========================= */
-
+            /* CORTO SECTION */
             .shortfilm-section {
-                width: min(100% - 40px, var(--max-content));
-                margin: 30px auto 90px;
-                padding: 48px;
+                width: min(100% - 48px, var(--max-content));
+                margin: 50px auto 100px;
+                padding: 60px 48px;
                 background-color: var(--color-wood-paper);
-                /* Textura ligera de madera clara en la sección */
-                background-image: 
-                    repeating-linear-gradient(0deg, rgba(120, 85, 45, 0.04) 0px, rgba(120, 85, 45, 0.04) 2px, transparent 2px, transparent 6px);
-                border: 2px solid #a38260;
+                border: 2px solid var(--color-border-ornament);
                 border-radius: var(--radius);
                 box-shadow: var(--shadow);
                 text-align: center;
@@ -378,136 +338,124 @@
 
             .shortfilm-section h2 {
                 font-family: var(--font-heading);
-                font-size: clamp(2rem, 4.5vw, 3.2rem);
-                margin: 0 0 18px;
+                font-size: clamp(2.2rem, 4vw, 3.2rem);
+                margin: 0 0 14px;
                 color: var(--color-text);
-                letter-spacing: 0.04em;
+                letter-spacing: 0.05em;
             }
 
             .shortfilm-section p {
-                font-family: var(--font-body);
-                font-size: 1.1rem;
-                max-width: 750px;
-                margin: 0 auto 30px;
+                font-size: 1.25rem;
+                max-width: 760px;
+                margin: 0 auto 36px;
                 color: var(--color-muted);
+                font-style: italic;
             }
 
             .shortfilm-player-placeholder {
                 width: 100%;
-                max-width: 800px;
+                max-width: 900px;
                 aspect-ratio: 16 / 9;
                 margin: 0 auto;
-                background: #2a1c12;
-                border: 2px solid #a38260;
+                background: #17100b;
+                border: 2px solid var(--color-border-ornament);
                 border-radius: 4px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 16px;
+                color: var(--color-gold);
+                box-shadow: inset 0 0 50px rgba(0,0,0,0.8);
+            }
+
+            .play-btn {
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                border: 2px solid var(--color-gold);
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                color: #d8c09d;
-                font-family: var(--font-body);
+                transition: var(--transition);
+                cursor: pointer;
             }
 
-            /* =========================
-               FOOTER
-            ========================= */
+            .play-btn:hover {
+                transform: scale(1.08);
+                background: rgba(203, 178, 121, 0.15);
+            }
 
+            /* FOOTER */
             footer {
                 width: 100%;
-                padding: 80px 20px 90px;
-                background: #3a2517;
-                background-image: 
-                    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.03) 0px, rgba(255, 255, 255, 0.03) 2px, transparent 2px, transparent 6px),
-                    radial-gradient(circle at 50% 100%, rgba(216, 192, 157, 0.12), transparent 70%);
+                padding: 85px 24px;
+                background: linear-gradient(180deg, #20130b 0%, #130a05 100%);
                 color: #fcefdc;
                 text-align: center;
                 font-family: var(--font-heading);
-                border-top: 3px double #d8c09d;
-            }
-
-            .footer-inner {
-                width: min(100%, 900px);
-                margin: 0 auto;
+                border-top: 4px double var(--color-gold);
             }
 
             .footer-crucifix {
                 font-size: 2.2rem;
-                color: #d8c09d;
-                margin-bottom: 12px;
+                color: var(--color-gold);
+                margin-bottom: 16px;
                 display: block;
             }
 
             .footer-title {
                 margin: 0;
-                font-size: clamp(1.8rem, 4vw, 3rem);
-                line-height: 1.2;
+                font-size: clamp(1.8rem, 3.5vw, 2.6rem);
                 font-weight: 700;
-                letter-spacing: 0.05em;
+                letter-spacing: 0.1em;
             }
 
             .footer-academic {
-                margin: 22px 0 0;
-                color: #e5d2b8;
-                font-size: clamp(1rem, 1.8vw, 1.25rem);
-                line-height: 1.5;
-                letter-spacing: 0.03em;
+                margin: 18px 0 0;
+                color: #d6be9f;
+                font-size: 1.15rem;
+                letter-spacing: 0.05em;
             }
 
             .footer-email {
                 display: inline-block;
-                margin-top: 25px;
-                color: #fcefdc;
-                text-decoration: none;
-                font-size: 1.1rem;
+                margin-top: 24px;
+                color: #ebdcc6;
+                font-size: 1.15rem;
                 font-family: var(--font-body);
-                transition: opacity var(--transition);
+                border-bottom: 1px dotted rgba(235, 220, 198, 0.5);
+                transition: var(--transition);
             }
 
             .footer-email:hover {
-                opacity: 0.7;
+                color: var(--color-gold);
+                border-bottom-color: var(--color-gold);
             }
 
             .footer-github {
                 display: inline-flex;
                 align-items: center;
-                justify-content: center;
-                min-height: 48px;
-                margin-top: 22px;
-                padding: 11px 24px;
-                border: 1px solid #d8c09d;
+                gap: 8px;
+                margin-top: 30px;
+                padding: 13px 28px;
+                border: 1px solid var(--color-gold);
                 border-radius: 4px;
-                color: #fcefdc;
-                text-decoration: none;
-                font-size: 0.95rem;
-                font-family: var(--font-body);
-                font-weight: bold;
-                letter-spacing: 0.06em;
-                transition: background var(--transition), color var(--transition), transform var(--transition);
+                color: var(--color-gold);
+                font-size: 0.9rem;
+                letter-spacing: 0.14em;
+                transition: var(--transition);
             }
 
             .footer-github:hover {
-                background: #d8c09d;
-                color: #2a1c12;
+                background: var(--color-gold);
+                color: #1a0e07;
                 transform: translateY(-2px);
             }
 
-            /* =========================
-               RESPONSIVE
-            ========================= */
-
-            @media (max-width: 768px) {
-                .header-info {
-                    grid-template-columns: 1fr;
-                    gap: 30px;
-                }
-
-                .cards-grid {
-                    grid-template-columns: 1fr;
-                    gap: 28px;
-                }
-
-                .shortfilm-section {
-                    padding: 28px 20px;
-                }
+            @media (max-width: 900px) {
+                .header-info { grid-template-columns: 1fr; gap: 24px; }
+                .cards-grid { grid-template-columns: 1fr; }
             }
         </style>
     </head>
@@ -516,7 +464,6 @@
         <header>
             <h1 class="sr-only">Hitgalut</h1>
             
-            <!-- Imagen colocada en el encabezado -->
             <div class="header-image-container">
                 <img
                     src="logo_hitgalut.jpg"
@@ -557,7 +504,6 @@
             <section class="content-hub" aria-labelledby="contenidos-title">
                 <div class="section-heading">
                     <h2 id="contenidos-title">Contenidos</h2>
-
                     <p>
                         Explora los diferentes proyectos y piezas que forman
                         parte de Hitgalut.
@@ -566,88 +512,96 @@
 
                 <div class="cards-grid">
                     <!-- TARJETA NEGRA (ELENCO) -->
-                    <article class="project-card card-black">
-                        <div class="card-visual">
-                            <div class="card-image-placeholder">
-                                <span>[ Hueco para imagen de Elenco ]</span>
-                            </div>
-                        </div>
-
-                        <div class="card-content">
-                            <div>
-                                <h3>Elenco</h3>
-
-                                <p>
-                                    Presentación de los actores, personajes e integrantes que dan vida al proyecto audiovisual y conforman el reparto principal.
-                                </p>
+                    <a href="elenco.html" class="card-wrapper-link" aria-label="Ir a Elenco">
+                        <article class="project-card card-black">
+                            <div class="card-visual">
+                                <div class="card-image-placeholder">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
+                                    <span>[ Hueco para imagen de Elenco ]</span>
+                                </div>
                             </div>
 
-                            <a class="card-link" href="#"> VER ELENCO → </a>
-                        </div>
-                    </article>
+                            <div class="card-content">
+                                <div>
+                                    <h3>Elenco</h3>
+                                    <p>
+                                        Presentación de los actores, personajes e integrantes que dan vida al proyecto audiovisual y conforman el reparto principal.
+                                    </p>
+                                </div>
+
+                                <span class="card-link"> VER ELENCO → </span>
+                            </div>
+                        </article>
+                    </a>
 
                     <!-- TARJETA ROJA (MOODREEL) -->
-                    <article class="project-card card-red">
-                        <div class="card-visual">
-                            <div class="card-image-placeholder">
-                                <span>[ Hueco para imagen de Moodreel ]</span>
-                            </div>
-                        </div>
-
-                        <div class="card-content">
-                            <div>
-                                <h3>Moodreel</h3>
-
-                                <p>
-                                    Pieza conceptual y estética que transmite la atmósfera, tono visual, ritmo y esencia del proyecto.
-                                </p>
+                    <a href="moodreel.html" class="card-wrapper-link" aria-label="Ir a Moodreel">
+                        <article class="project-card card-red">
+                            <div class="card-visual">
+                                <div class="card-image-placeholder">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                    <span>[ Hueco para imagen de Moodreel ]</span>
+                                </div>
                             </div>
 
-                            <a class="card-link" href="#"> VER MOODREEL → </a>
-                        </div>
-                    </article>
+                            <div class="card-content">
+                                <div>
+                                    <h3>Moodreel</h3>
+                                    <p>
+                                        Pieza conceptual y estética que transmite la atmósfera, tono visual, ritmo y esencia del proyecto.
+                                    </p>
+                                </div>
+
+                                <span class="card-link"> VER MOODREEL → </span>
+                            </div>
+                        </article>
+                    </a>
 
                     <!-- TARJETA BLANCA (MAKING OFF) -->
-                    <article class="project-card card-white">
-                        <div class="card-visual">
-                            <div class="card-image-placeholder">
-                                <span>[ Hueco para imagen de Making off ]</span>
-                            </div>
-                        </div>
-
-                        <div class="card-content">
-                            <div>
-                                <h3>Making off</h3>
-
-                                <p>
-                                    Un vistazo tras las cámaras para descubrir el proceso de rodaje, la producción y el trabajo del equipo.
-                                </p>
+                    <a href="makingoff.html" class="card-wrapper-link" aria-label="Ir a Making off">
+                        <article class="project-card card-white">
+                            <div class="card-visual">
+                                <div class="card-image-placeholder">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                                    <span>[ Hueco para imagen de Making off ]</span>
+                                </div>
                             </div>
 
-                            <a class="card-link" href="#"> VER MAKING OFF → </a>
-                        </div>
-                    </article>
+                            <div class="card-content">
+                                <div>
+                                    <h3>Making off</h3>
+                                    <p>
+                                        Un vistazo tras las cámaras para descubrir el proceso de rodaje, la producción y el trabajo del equipo.
+                                    </p>
+                                </div>
+
+                                <span class="card-link"> VER MAKING OFF → </span>
+                            </div>
+                        </article>
+                    </a>
 
                     <!-- TARJETA AMARILLA (PODCASTS) -->
-                    <article class="project-card card-yellow">
-                        <div class="card-visual">
-                            <div class="card-image-placeholder">
-                                <span>[ Hueco para imagen de Podcasts ]</span>
-                            </div>
-                        </div>
-
-                        <div class="card-content">
-                            <div>
-                                <h3>Podcasts</h3>
-
-                                <p>
-                                    Episodios sonoros donde se profundiza en las temáticas, entrevistas y debates alrededor del proyecto.
-                                </p>
+                    <a href="podcast.html" class="card-wrapper-link" aria-label="Ir a Podcasts">
+                        <article class="project-card card-yellow">
+                            <div class="card-visual">
+                                <div class="card-image-placeholder">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                                    <span>[ Hueco para imagen de Podcasts ]</span>
+                                </div>
                             </div>
 
-                            <a class="card-link" href="#"> ESCUCHAR PODCASTS → </a>
-                        </div>
-                    </article>
+                            <div class="card-content">
+                                <div>
+                                    <h3>Podcasts</h3>
+                                    <p>
+                                        Episodios sonoros donde se profundiza en las temáticas, entrevistas y debates alrededor del proyecto.
+                                    </p>
+                                </div>
+
+                                <span class="card-link"> ESCUCHAR PODCASTS → </span>
+                            </div>
+                        </article>
+                    </a>
                 </div>
             </section>
 
@@ -658,6 +612,9 @@
                     Disfruta de la pieza central de Revelación, la obra donde converge todo el trabajo creativo y narrativo del proyecto.
                 </p>
                 <div class="shortfilm-player-placeholder">
+                    <div class="play-btn">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+                    </div>
                     <span>[ Reproductor del Cortometraje ]</span>
                 </div>
             </section>
@@ -679,7 +636,7 @@
 
                 <br />
 
-                <a href="https://github.com/Hitgalut/hitgalut" class="footer-github" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/Hitgalut" class="footer-github" target="_blank" rel="noopener noreferrer">
                     GITHUB &rarr;
                 </a>
             </div>

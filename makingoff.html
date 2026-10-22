@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Making off — Hitgalut</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f8f6f0;
+            --surface: #ffffff;
+            --accent: #7a542e;
+            --text: #261b14;
+            --text-muted: #69574a;
+            --font-h: 'Cinzel', serif;
+            --font-b: 'Cormorant Garamond', Georgia, serif;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-b);
+            font-size: 19px;
+            line-height: 1.6;
+        }
+        .nav-bar {
+            padding: 24px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(122, 84, 46, 0.2);
+            font-family: var(--font-h);
+        }
+        .back-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .container {
+            width: min(100% - 48px, 1100px);
+            margin: 60px auto 100px;
+        }
+        .header-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .header-title h1 {
+            font-family: var(--font-h);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--accent);
+            margin: 0 0 10px;
+            letter-spacing: 0.08em;
+        }
+        .header-title p {
+            font-size: 1.35rem;
+            color: var(--text-muted);
+            max-width: 680px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+        .gallery-item {
+            background: var(--surface);
+            border: 1px solid #dfd5c8;
+            padding: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+        .gallery-box {
+            width: 100%;
+            height: 240px;
+            background: #ede6dc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-style: italic;
+            border: 1px dashed rgba(122,84,46,0.3);
+        }
+        .caption {
+            padding-top: 14px;
+        }
+        .caption h3 {
+            margin: 0 0 4px;
+            font-family: var(--font-h);
+            font-size: 1.25rem;
+            color: var(--accent);
+        }
+        .caption p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        @media (max-width: 768px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <a href="index.html" class="back-link">← VOLVER AL PROYECTO</a>
+        <span style="letter-spacing: 0.15em; font-size: 0.85rem; color: var(--accent);">PRODUCCIÓN Y TRAS DE CÁMARAS</span>
+    </nav>
+    <div class="container">
+        <div class="header-title">
+            <h1>Making off</h1>
+            <p>Un vistazo tras las cámaras para descubrir el proceso de rodaje, la producción y el trabajo del equipo.</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <div class="gallery-box"><span>[ Fotografía: Preparación de Iluminación y Cámara ]</span></div>
+                <div class="caption">
+                    <h3>Fase de Rodaje en Exteriores</h3>
+                    <p>Captura de secuencias bajo luz natural difusa buscando la estética desolada del guion.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-box"><span>[ Fotografía: Dirección y Guion Técnico ]</span></div>
+                <div class="caption">
+                    <h3>Dirección de Actores</h3>
+                    <p>Ensayos previos y marcación de miradas para lograr la contención emocional requerida.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-box"><span>[ Fotografía: Registro y Pertiguista ]</span></div>
+                <div class="caption">
+                    <h3>Captura de Sonido Directo</h3>
+                    <p>Detalle en el registro de texturas orgánicas y viento como elemento narrativo.</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="gallery-box"><span>[ Fotografía: Monitor y Corrección de Color ]</span></div>
+                <div class="caption">
+                    <h3>Postproducción y Montaje</h3>
+                    <p>Sesiones de edición afinando el tempo rítmico y la graduación del material grabado.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Podcasts — Hitgalut</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f8f6cc;
+            --surface: #ffffff;
+            --border: #c9c366;
+            --text: #25220c;
+            --text-muted: #5e5a32;
+            --font-h: 'Cinzel', serif;
+            --font-b: 'Cormorant Garamond', Georgia, serif;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            background: linear-gradient(180deg, #fbf9d4 0%, var(--bg) 100%);
+            color: var(--text);
+            font-family: var(--font-b);
+            font-size: 19px;
+            line-height: 1.6;
+        }
+        .nav-bar {
+            padding: 24px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            font-family: var(--font-h);
+        }
+        .back-link {
+            color: #4b4613;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .container {
+            width: min(100% - 48px, 980px);
+            margin: 60px auto 100px;
+        }
+        .header-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .header-title h1 {
+            font-family: var(--font-h);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: #3b3710;
+            margin: 0 0 10px;
+            letter-spacing: 0.08em;
+        }
+        .header-title p {
+            font-size: 1.35rem;
+            color: var(--text-muted);
+            max-width: 680px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+        .episodes-list {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+        .episode-card {
+            background: rgba(255, 255, 255, 0.7);
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+        }
+        .episode-meta {
+            font-family: var(--font-h);
+            font-size: 0.85rem;
+            letter-spacing: 0.12em;
+            color: #6e6727;
+            text-transform: uppercase;
+        }
+        .episode-card h2 {
+            margin: 0;
+            font-family: var(--font-h);
+            font-size: 1.6rem;
+            color: #2b2707;
+        }
+        .episode-card p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+        .audio-player-mock {
+            margin-top: 10px;
+            height: 48px;
+            background: #edeaa6;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            gap: 16px;
+            border: 1px solid var(--border);
+        }
+        .play-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #2b2707;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .timeline {
+            flex: 1;
+            height: 5px;
+            background: rgba(0,0,0,0.15);
+            border-radius: 3px;
+            position: relative;
+        }
+        .progress {
+            width: 35%;
+            height: 100%;
+            background: #3a3407;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <a href="index.html" class="back-link">← VOLVER AL PROYECTO</a>
+        <span style="letter-spacing: 0.15em; font-size: 0.85rem; color: #524d1a;">ESPACIO SONORO</span>
+    </nav>
+    <div class="container">
+        <div class="header-title">
+            <h1>Podcasts</h1>
+            <p>Episodios sonoros donde se profundiza en las temáticas, entrevistas y debates alrededor del proyecto.</p>
+        </div>
+        <div class="episodes-list">
+            <article class="episode-card">
+                <span class="episode-meta">Episodio 01 · 24 min</span>
+                <h2>Génesis del Proyecto: Sufrimiento y Creación</h2>
+                <p>Conversación inicial del equipo sobre la premisa existencial y cómo traducir el dolor humano en una propuesta cinematográfica coherente.</p>
+                <div class="audio-player-mock">
+                    <div class="play-icon">▶</div>
+                    <div class="timeline"><div class="progress"></div></div>
+                    <span style="font-size: 0.85rem; font-family: monospace;">08:24 / 24:10</span>
+                </div>
+            </article>
+
+            <article class="episode-card">
+                <span class="episode-meta">Episodio 02 · 31 min</span>
+                <h2>Religiosidad y Peligrosidad en la Historia</h2>
+                <p>Análisis y debate crítico acerca del componente espiritual y el conflicto que plantea el guion entre la fe y el dogma.</p>
+                <div class="audio-player-mock">
+                    <div class="play-icon">▶</div>
+                    <div class="timeline"><div class="progress" style="width: 15%;"></div></div>
+                    <span style="font-size: 0.85rem; font-family: monospace;">04:40 / 31:05</span>
+                </div>
+            </article>
+        </div>
+    </div>
+</body>
+</html>

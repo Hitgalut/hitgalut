@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moodreel — Hitgalut</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #3d0c04;
+            --surface: #521208;
+            --gold: #f5d49a;
+            --text: #fff2ed;
+            --text-muted: #e6b8ad;
+            --font-h: 'Cinzel', serif;
+            --font-b: 'Cormorant Garamond', Georgia, serif;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            background: radial-gradient(circle at 50% 20%, #631407 0%, var(--bg) 100%);
+            color: var(--text);
+            font-family: var(--font-b);
+            font-size: 19px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        .nav-bar {
+            padding: 24px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(245, 212, 154, 0.25);
+            font-family: var(--font-h);
+        }
+        .back-link {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .container {
+            width: min(100% - 48px, 1000px);
+            margin: 60px auto 100px;
+            text-align: center;
+        }
+        h1 {
+            font-family: var(--font-h);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--gold);
+            margin: 0 0 10px;
+            letter-spacing: 0.08em;
+        }
+        .desc {
+            font-size: 1.35rem;
+            color: var(--text-muted);
+            max-width: 680px;
+            margin: 0 auto 50px;
+            font-style: italic;
+        }
+        .video-box {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #180301;
+            border: 2px solid rgba(245, 212, 154, 0.4);
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            color: var(--gold);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+        }
+        .notes-grid {
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            text-align: left;
+        }
+        .note {
+            background: rgba(0,0,0,0.25);
+            padding: 24px;
+            border-left: 3px solid var(--gold);
+        }
+        .note h3 {
+            margin: 0 0 8px;
+            font-family: var(--font-h);
+            font-size: 1.2rem;
+            color: var(--gold);
+        }
+        .note p {
+            margin: 0;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <a href="index.html" class="back-link">← VOLVER AL PROYECTO</a>
+        <span style="letter-spacing: 0.15em; font-size: 0.85rem; color: var(--gold);">ATMÓSFERA VISUAL</span>
+    </nav>
+    <div class="container">
+        <h1>Moodreel</h1>
+        <p class="desc">Pieza conceptual y estética que transmite la atmósfera, tono visual, ritmo y esencia del proyecto.</p>
+
+        <div class="video-box">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span>[ Reproductor del Moodreel ]</span>
+        </div>
+
+        <div class="notes-grid">
+            <div class="note">
+                <h3>Textura y Color</h3>
+                <p>Paletas frías y ocres que evocan la intemperie, la tierra yerma y el desgaste temporal.</p>
+            </div>
+            <div class="note">
+                <h3>Cadencia Sonora</h3>
+                <p>Ambientes densos de viento y silencios marcados que acentúan la soledad humana.</p>
+            </div>
+            <div class="note">
+                <h3>Composición</h3>
+                <p>Planos pictóricos y desolados que dialogan con el misterio y la trascendencia.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

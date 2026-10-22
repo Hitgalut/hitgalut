@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elenco — Hitgalut</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #14100c;
+            --surface: #1f1712;
+            --gold: #cbb279;
+            --text: #ede4d8;
+            --text-muted: #a69483;
+            --font-h: 'Cinzel', serif;
+            --font-b: 'Cormorant Garamond', Georgia, serif;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-b);
+            font-size: 19px;
+            line-height: 1.6;
+        }
+        .nav-bar {
+            padding: 24px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(203, 178, 121, 0.25);
+            font-family: var(--font-h);
+        }
+        .back-link {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .container {
+            width: min(100% - 48px, 1100px);
+            margin: 60px auto 100px;
+        }
+        .header-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .header-title h1 {
+            font-family: var(--font-h);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--gold);
+            margin: 0 0 10px;
+            letter-spacing: 0.08em;
+        }
+        .header-title p {
+            font-size: 1.35rem;
+            color: var(--text-muted);
+            max-width: 680px;
+            margin: 0 auto;
+            font-style: italic;
+        }
+        .cast-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+        .cast-card {
+            background: var(--surface);
+            border: 1px solid rgba(203, 178, 121, 0.25);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+        }
+        .cast-photo {
+            aspect-ratio: 3 / 4;
+            background: #0f0a07;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid rgba(203, 178, 121, 0.2);
+            color: var(--gold);
+            font-style: italic;
+        }
+        .cast-info {
+            padding: 24px;
+        }
+        .cast-info h2 {
+            margin: 0 0 6px;
+            font-family: var(--font-h);
+            font-size: 1.4rem;
+            color: var(--gold);
+        }
+        .character-role {
+            font-family: var(--font-h);
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #d6be9f;
+            display: block;
+            margin-bottom: 12px;
+        }
+        .cast-info p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 1.15rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <a href="index.html" class="back-link">← VOLVER AL PROYECTO</a>
+        <span style="letter-spacing: 0.15em; font-size: 0.85rem; color: var(--gold);">HITGALUT ARCHIVO</span>
+    </nav>
+    <div class="container">
+        <div class="header-title">
+            <h1>Elenco</h1>
+            <p>Presentación de los actores, personajes e integrantes que dan vida al proyecto audiovisual y conforman el reparto principal.</p>
+        </div>
+        <div class="cast-grid">
+            <article class="cast-card">
+                <div class="cast-photo"><span>[ Fotografía del Personaje ]</span></div>
+                <div class="cast-info">
+                    <h2>Protagonista</h2>
+                    <span class="character-role">Reparto Principal</span>
+                    <p>Figura central atrapada en el cuestionamiento existencial y la confrontación espiritual de la historia.</p>
+                </div>
+            </article>
+            <article class="cast-card">
+                <div class="cast-photo"><span>[ Fotografía del Personaje ]</span></div>
+                <div class="cast-info">
+                    <h2>Voz Testimonial</h2>
+                    <span class="character-role">Personaje de Apoyo</span>
+                    <p>Encarna el peso del dolor acumulado y la memoria de las épocas que atraviesa el relato.</p>
+                </div>
+            </article>
+            <article class="cast-card">
+                <div class="cast-photo"><span>[ Fotografía del Personaje ]</span></div>
+                <div class="cast-info">
+                    <h2>La Presencia</h2>
+                    <span class="character-role">Figura Simbólica</span>
+                    <p>Representación alegórica de la incertidumbre humana frente a lo sagrado y lo hostil.</p>
+                </div>
+            </article>
+        </div>
+    </div>
+</body>
+</html>
